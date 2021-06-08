@@ -3,3 +3,5 @@ com/demo/java/multi_thread/VolatileTest.java
  com.demo.java.multi_thread.VolatileTest$1
  com.demo.java.multi_thread.VolatileTest$2
  com.demo.java.multi_thread.VolatileTest$3
+com/demo/java/multi_thread/ThreadStop.java
+ com.demo.java.multi_thread.ThreadStop
