@@ -5,3 +5,5 @@ com/demo/java/multi_thread/VolatileTest.java
  com.demo.java.multi_thread.VolatileTest$3
 com/demo/java/multi_thread/ThreadStop.java
  com.demo.java.multi_thread.ThreadStop
+com/demo/java/jwt/JwtUtils.java
+ com.demo.java.jwt.JwtUtils
