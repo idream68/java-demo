@@ -15,6 +15,12 @@ import java.util.Date;
  * @Description:
  **/
 public class JwtUtils {
+    /**
+     * 生成token
+     * @param account 账号
+     * @param currentTimeMillis 当前时间
+     * @return 生成token
+     */
     public static String sign(String account, String currentTimeMillis) {
         try {
             Date date = new Date(System.currentTimeMillis() + 100 * 1000);
@@ -31,6 +37,12 @@ public class JwtUtils {
         }
     }
 
+    /**
+     * 获取token中claim的信息
+     * @param token 需解析的token字符串
+     * @param claim 查看token中claim的名称
+     * @return token中claim的值
+     */
     public static String getClaim(String token, String claim) {
         try {
             DecodedJWT jwt = JWT.decode(token);
@@ -42,17 +54,18 @@ public class JwtUtils {
         }
     }
 
+    /**
+     * 验证token是否有效
+     * @param token 需要验证的token
+     * @return
+     */
     public static boolean verify(String token) {
         try {
             // 帐号加JWT私钥解密
-            String secret = getClaim(token, "account");
-            System.out.println(secret);
-            long curr = Long.parseLong(getClaim(token, "currentTimeMillis"));
-            System.out.println(System.currentTimeMillis() - curr);
             Algorithm algorithm = Algorithm.HMAC256("abcdtest");
             JWTVerifier verifier = JWT.require(algorithm)
                     .build();
-            DecodedJWT jwt = verifier.verify(token);
+            verifier.verify(token);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,8 +73,16 @@ public class JwtUtils {
         }
     }
 
+    /**
+     * 获取token的失效时间
+     * @param token token字符串
+     * @return
+     */
+    public static Date getExpTime(String token) {
+        return JWT.decode(token).getExpiresAt();
+    }
+
     public static void main(String[] args) {
-//        System.out.println(sign("test", "1000"));
-        System.out.println(verify("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXJyZW50VGltZU1pbGxpcyI6IjEwMDAiLCJhY2NvdW50IjoidGVzdCJ9.2gFUyaC0qFO3oVT8o4dHH6OWuoOMMFI81-eDWMRZBL8"));
+        System.out.println(sign("test", "1000"));
     }
 }
