@@ -13,3 +13,7 @@ com/demo/java/typegetter/Grade.java
  com.demo.java.typegetter.Grade
 com/demo/java/typegetter/ObjectGetter.java
  com.demo.java.typegetter.ObjectGetter
+com/demo/java/lamdba/User.java
+ com.demo.java.lamdba.User
+com/demo/java/lamdba/ListToMap.java
+ com.demo.java.lamdba.ListToMap
